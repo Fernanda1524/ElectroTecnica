@@ -1,0 +1,102 @@
+@import "_styleContacto.css";
+
+//VARIABLES
+
+$colorWhite: white;
+$spacingTen: 10px;
+$spacingFive: 5px;
+$bold: bold;
+$alignCenter: center;
+
+
+
+//STYLES
+
+.prueba {
+	
+padding: 5px;}
+
+h2 {
+
+	color: $colorWhite;
+	font-size: 20px;
+	font-family: "Roboto", Arial, Tahoma, sans-serif;
+	text-align: $alignCenter;
+	letter-spacing: $spacingTen;
+	font-weight: $bold;
+
+}
+
+
+
+p {
+	font-family: "Roboto", Arial, Tahoma, sans-serif;
+	font-weight: bold;
+	letter-spacing: $spacingFive;
+	word-spacing: 3px;
+}
+
+
+.card-body{
+
+justify-content: space-around;
+
+}
+
+.titulo {
+	justify-content: space-between;
+	text-align: $alignCenter;
+}
+/******************************FOOTER**************************************/
+
+.nuestrosServicios{
+
+	margin-bottom: 10px;
+}
+
+.card:hover
+{
+transform: translate(15px, 25px);
+}
+/*****************************PRESUPUESTOS-MATERIALES-EMPRESA*******************************/
+
+.presupuestos, .materiales, .empresa{
+
+margin-top: 20px;
+text-align: $alignCenter;
+}
+
+
+@media (max-width: 731px) {
+
+.presupuestos, materiales, .empresa{
+	
+	margin-top: $spacingTen - 7;
+}
+
+}
+
+
+
+
+
+
+
+
+
+.footer__navigation{
+	
+}
+
+.header__navigation{
+	
+}
+
+.main__{
+	
+}
+
+.aside__{
+	
+
+}

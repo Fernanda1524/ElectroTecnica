@@ -1,0 +1,40 @@
+@import url(_styleContacto.css);
+.prueba {
+  padding: 5px; }
+
+h2 {
+  color: white;
+  font-size: 20px;
+  font-family: "Roboto", Arial, Tahoma, sans-serif;
+  text-align: center;
+  letter-spacing: 10px;
+  font-weight: bold; }
+
+p {
+  font-family: "Roboto", Arial, Tahoma, sans-serif;
+  font-weight: bold;
+  letter-spacing: 5px;
+  word-spacing: 3px; }
+
+.card-body {
+  justify-content: space-around; }
+
+.titulo {
+  justify-content: space-between;
+  text-align: center; }
+
+/******************************FOOTER**************************************/
+.nuestrosServicios {
+  margin-bottom: 10px; }
+
+.card:hover {
+  transform: translate(15px, 25px); }
+
+/*****************************PRESUPUESTOS-MATERIALES-EMPRESA*******************************/
+.presupuestos, .materiales, .empresa {
+  margin-top: 20px;
+  text-align: center; }
+
+@media (max-width: 731px) {
+  .presupuestos, materiales, .empresa {
+    margin-top: 3px; } }
