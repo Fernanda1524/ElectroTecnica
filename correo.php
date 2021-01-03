@@ -44,10 +44,10 @@
             $mail->SMTPAuth = true;
 
             $mail->CharSet = 'UTF-8';
-            $mail->Username   = 'noresponder.aut1974@gmail.com'; //correo con el cual se envian los mails
-            $mail->Password   = 'auto123456'; //conraseña con la cual se envian los mails
+            $mail->Username   = 'contactoelectro2020@gmail.com'; //correo con el cual se envian los mails
+            $mail->Password   = 'Jg12345678'; //conraseña con la cual se envian los mails
             $mail->Port       = 587;
-            $mail->setFrom('noresponder.aut1974@gmail.com', 'TEST');
+            $mail->setFrom('contactoelectro2020@gmail.com', 'TEST');
             $mail->AddAddress("fernanda.gtp87@gmail.com"); //correo al cual se enviara la informacion de este archivo
             $mail->isHTML(true);
             $mail->Subject = "Formulario de contacto";
