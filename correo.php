@@ -1,65 +1,74 @@
 <?php
-    
-    use PHPMailer\PHPMailer\PHPMailer;
-    use PHPMailer\PHPMailer\Exception;
-    require 'PHPMailer/src/Exception.php';
-    require 'PHPMailer/src/PHPMailer.php';
-    require 'PHPMailer/src/SMTP.php';
 
-    $mail = new PHPMailer(true);
+/**
+ * PHPMailer simple contact form example.
+ * If you want to accept and send uploads in your form, look at the send_file_upload example.
+ */
 
-    if(isset($_REQUEST["sendMail"]) && $_REQUEST["sendMail"] != "") {
-        $formcontent = '
-            <!doctype html>
-            <html>
-            <head>
-            <meta charset="utf-8">
-            <title>CORREO</title>
-            <style>
-            /* cuando es PC */
-            @media screen and (min-width: 500px) {
-            .contenedor{
-                width:700px;
-                margin:auto;
-            }
-            }
+//Import the PHPMailer class into the global namespace
+use PHPMailer\PHPMailer\PHPMailer;
 
-            </style>
-            </head>
+require '../vendor/autoload.php';
 
-            <body>
-            <div class="contenedor">
-                <div class="mensaje" style="margin-top:57px;padding:0 49px;">
-                    <p>Datos del formulario<br>'."Nombre: $_REQUEST[name] <br> Apellido: $_REQUEST[lastName] <br> Correo electrónico: $_REQUEST[email] <br> Mensaje: $_REQUEST[message]".'</p>
-                </div>
-            </div>
-            </body>
-            </html>
-        ';
-        try {
-            $mail->isSMTP();
-            $mail->SMTPDebug = 0;
-            $mail->Host = 'smtp.gmail.com';
-            $mail->SMTPSecure = 'tls';
-            $mail->SMTPAuth = true;
-
-            $mail->CharSet = 'UTF-8';
-            $mail->Username   = 'contacto@electro-tecnica.com'; //correo con el cual se envian los mails
-            $mail->Password   = 'Jg12345678'; //conraseña con la cual se envian los mails
-            $mail->Port       = 587;
-            $mail->setFrom('contacto@electro-tecnica.com', 'TEST');
-            $mail->AddAddress("fernanda.gtp87@gmail.com"); //correo al cual se enviara la informacion de este archivo
-            $mail->isHTML(true);
-            $mail->Subject = "Formulario de contacto";
-            $mail->Body    = $formcontent;
-            $mail->send();
-            echo json_encode(array("msg" => "OK"));
-        } catch (Exception $e) {
-            echo json_encode(array("msg" => "Error: {$mail->ErrorInfo}"));
+if (array_key_exists('to', $_POST)) {
+    $err = false;
+    $msg = '';
+    $email = '';
+    //Apply some basic validation and filtering to the subject
+    if (array_key_exists('subject', $_POST)) {
+        $subject = substr(strip_tags($_POST['subject']), 0, 255);
+    } else {
+        $subject = 'No subject given';
+    }
+    //Apply some basic validation and filtering to the query
+    if (array_key_exists('query', $_POST)) {
+        //Limit length and strip HTML tags
+        $query = substr(strip_tags($_POST['query']), 0, 16384);
+    } else {
+        $query = '';
+        $msg = 'No query provided!';
+        $err = true;
+    }
+    //Apply some basic validation and filtering to the name
+    if (array_key_exists('name', $_POST)) {
+        //Limit length and strip HTML tags
+        $name = substr(strip_tags($_POST['name']), 0, 255);
+    } else {
+        $name = '';
+    }
+    //Validate to address
+    //Never allow arbitrary input for the 'to' address as it will turn your form into a spam gateway!
+    //Substitute appropriate addresses from your own domain, or simply use a single, fixed address
+    if (array_key_exists('to', $_POST) && in_array($_POST['to'], ['sales', 'support', 'accounts'], true)) {
+        $to = $_POST['to'] . '@example.com';
+    } else {
+        $to = 'support@example.com';
+    }
+    //Make sure the address they provided is valid before trying to use it
+    if (array_key_exists('email', $_POST) && PHPMailer::validateAddress($_POST['email'])) {
+        $email = $_POST['email'];
+    } else {
+        $msg .= 'Error: invalid email address provided';
+        $err = true;
+    }
+    if (!$err) {
+        $mail = new PHPMailer();
+        $mail->isSMTP();
+        $mail->Host = 'localhost';
+        $mail->Port = 25;
+        $mail->CharSet = PHPMailer::CHARSET_UTF8;
+        //It's important not to use the submitter's address as the from address as it's forgery,
+        //which will cause your messages to fail SPF checks.
+        //Use an address in your own domain as the from address, put the submitter's address in a reply-to
+        $mail->setFrom('contacto@electro-tecnica.com', (empty($name) ? 'Contact form' : $name));
+        $mail->addAddress("fernanda.gtp87@gmail.com");
+        $mail->addReplyTo($email, $name);
+        $mail->Subject = 'Contact form: ' . $subject;
+        $mail->Body = "Contact form submission\n\n" . $query;
+        if (!$mail->send()) {
+            $msg .= 'Mailer Error: ' . $mail->ErrorInfo;
+        } else {
+            $msg .= 'Message sent!';
         }
     }
-    else {
-        echo json_encode(array("msg" => "Sin información que procesar"));
-    }
-    
-?>
+} ?>
