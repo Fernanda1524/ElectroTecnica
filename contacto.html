@@ -9,8 +9,10 @@
 <body>
 <div class="container">
 	<h3>Formulario de Contacto</h3>
+  <?php if (empty($msg)) { ?>
+
 	<div id="msg" style="display: none;"></div>
-	<form action="#" name="contact_form">
+	<form action="#" method="POST" name="contact_form">
 		<label for="first_name">Nombre</label>
 		<input name="first_name" id="first_name" type="text" required placeholder="Pedro"/>
 		<br>
@@ -27,6 +29,9 @@
 		</div>
 
 	</form>	
+    <?php } else {
+    echo $msg;
+} ?>
 	
 
 <div class="datosContacto">
@@ -37,7 +42,7 @@
                 </li>
                 <li>
                   <i></i>
-                  <p>+ 5989293949</p>
+                  <p>+ 59892756446</p>
                 </li>
                 <li>
                   <i></i>
