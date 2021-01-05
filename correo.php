@@ -7,8 +7,10 @@
 
 //Import the PHPMailer class into the global namespace
 use PHPMailer\PHPMailer\PHPMailer;
-
-require '../vendor/autoload.php';
+    use PHPMailer\PHPMailer\Exception;
+    require 'PHPMailer/src/Exception.php';
+    require 'PHPMailer/src/PHPMailer.php';
+    require 'PHPMailer/src/SMTP.php';
 
 if (array_key_exists('to', $_POST)) {
     $err = false;
@@ -52,8 +54,12 @@ if (array_key_exists('to', $_POST)) {
         $err = true;
     }
     if (!$err) {
-        $mail = new PHPMailer();
+        
         $mail->isSMTP();
+
+        $mail->SMTPAuth = false;
+        $mail->SMTPAutoTLS = false; 
+        $mail = new PHPMailer();
         $mail->Host = 'localhost';
         $mail->Port = 25;
         $mail->CharSet = PHPMailer::CHARSET_UTF8;
