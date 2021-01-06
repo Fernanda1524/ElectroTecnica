@@ -19,11 +19,11 @@
 
         $mail->Host = 'smtp.electro-tecnica.com';
         $mail->SMTPAuth = true;
-        $mail->Username ='contacto@electro-tecnica.com';
-        $mail->Password = 'Jg26555621';
+        $mail->Username = $myAwardSpaceEmail;
+        $mail->Password = $myAwardSpaceEmailPassword;
         $mail->SMTPSecure = 'tls';
         $mail->Port = 587;
-
+        
         $mail->setFrom($myAwardSpaceEmail, 'Mailer');
         $mail->addAddress($myPersonalEmail);
         $mail->addReplyTo($_POST['email'], $_POST['name']);
@@ -34,7 +34,7 @@
 
         try {
             $mail->send();
-            echo 'Your message was sent successfully!';
+            echo 'Ty mensaje se envió correctamente!';
         } catch (Exception $e) {
             echo "Your message could not be sent! PHPMailer Error: {$mail->ErrorInfo}";
         }
