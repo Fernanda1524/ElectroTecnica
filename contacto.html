@@ -9,10 +9,9 @@
 <body>
 <div class="container">
 	<h3>Formulario de Contacto</h3>
-  <?php if (empty($msg)) { ?>
 
 	<div id="msg" style="display: none;"></div>
-	<form action="#" method="POST" name="contact_form">
+	<form action="mail-script.php" method="POST" name="contact_form">
 		<label for="first_name">Nombre</label>
 		<input name="first_name" id="first_name" type="text" required placeholder="Pedro"/>
 		<br>
@@ -25,13 +24,11 @@
 		<label for="message">Mensaje</label><br>
 		<textarea name="message" id="message" cols="30" rows="10" placeholder="Dejanos tu mensaje aqui ..." required> </textarea>
 		<div class="center">
-			<input type="button" id="sendMail" value="Enviar">
+			<input type="submit" id="submit" name="submit" value="Enviar">
 		</div>
 
 	</form>	
-    <?php } else {
-    echo $msg;
-} ?>
+ 
 	
 
 <div class="datosContacto">
@@ -52,51 +49,6 @@
             </div>
 </div>
       <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-      <script>
-        $("#sendMail").click(function() {
-            if($("#first_name").val() != "" && $("#last_name").val() != "" && $("#email").val() != "" && $("#message").val() != "") {
-                $("#sendMail").attr("disabled", true);
-                if(isValidEmail($("#email").val())) {
-                    $.ajax({
-                        type: 'POST',                        
-                        url: 'correo.php',
-                        data: {
-                            sendMail: 1,
-                            name: $("#first_name").val(),
-                            lastName: $("#last_name").val(),
-                            email: $("#email").val(),
-                            message: $("#message").val()
-                        },
-                        dataType: 'json',
-                        success: function(response) {
-                            $("#sendMail").removeAttr("disabled");
-                            if(response.msg == "OK") {
-                                setMessage('<div style="color: green;">Su mensaje ha sido enviado exitosamente!</div>');
-                            }
-                            else {
-                                setMessage('<div style="color: red;">'+response.msg+'</div>');
-                            }
-                        }
-                    });
-                }
-                else {
-                    setMessage('<div style="color: red;">Correo electrónico inválido</div>');
-                }
-            }
-            else {
-                setMessage('<div style="color: red;">Todos los campos son obligatorios</div>');
-            }
-        });
-        function setMessage(text) {
-            $("#msg").html(text).show();
-            setTimeout(function() {
-                $("#msg").html("").hide();
-            }, 7000);
-        }
-        function isValidEmail(email) {
-            var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-            return re.test(email);
-        }
-      </script>
+      
 </body>
 </html>
