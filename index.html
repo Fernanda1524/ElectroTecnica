@@ -8,10 +8,14 @@
 	<title>ElectroTécnica-Electricista</title>
 
 	<link href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/css/bootstrap.min.css" rel="stylesheet">
-
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="preconnect" href="https://fonts.gstatic.com">
 	<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;1,100&display=swap" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="css/estilo.css">
+  <!-- Custom - Common CSS -->
+  <link href="assets/css/plugins.css" rel="stylesheet">
+  <link href="assets/css/elements.css" rel="stylesheet">
+  <link href="assets/css/rtl.css" rel="stylesheet">
     <style>
         .dropdown-menu {
             background: #343a40;
@@ -62,14 +66,11 @@
 
 			</nav>
 	
-
-
-
 	</header>
 
 	<main>
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark justify-content-center nuestrosServicios">
-  <!-- Navbar content --><h2>NUESTROS SERVICIOSs</h2>
+  <!-- Navbar content --><h2>NUESTROS SERVICIOS</h2>
 </nav>
 	<div class="card-group">
   <div class="card text-center text-dark bg-light mb-3 border-light prueba">
@@ -97,44 +98,70 @@
 
 </main>
 	<aside>
-	<div class="Pre_Mat_Emp">
 		<div class="presupuestos">
 			<nav class="navbar navbar-expand-lg navbar-dark bg-dark justify-content-center">
-  <!-- Navbar content --><h2>PRESUPUESTOS</h2>
-</nav>
+        <h2>PRESUPUESTOS</h2>
+      </nav>
 			<p>Le ofreceremos un presupuesto detallado para la ejecución del servicio que requiera. Nuestros presupuestos son sin compromiso.</p>
 		</div>
-		<div class="materiales">
-			<nav class="navbar navbar-expand-lg navbar-dark bg-dark justify-content-center">
+<!-- Sección About -->
+
+     
+          <nav class="navbar navbar-expand-lg navbar-dark justify-content-center bg-dark">
+            <h2>EMPRESA</h2>
+          </nav>
+            <!--<img src="assets/images/seprator.png" alt="seprator" class="separator" />-->
+           <div class="about-section container empresa" id="empresa">
+          <div class="row">
+
+            <div class="col-md-3 col-sm-6 col-xs-6 about-content-left text-center">
+              <div class="about-box">
+                <div class="icon">
+                  <i class="fa fa-address-card-o"></i>
+                </div>
+                <h5>Somos Jovenes</h5>
+                <p>Electro Técnica es una empresa nacional joven formada por instaladores profesionales. Orientada principalmente a instalaciones eléctricas.</p>
+              </div>
+            </div>
+            <div class="col-md-3 col-sm-6 col-xs-6 about-content-right text-center">
+            <div class="about-box">
+              <i class="icon fa fa-plug"></i>
+              <h5>Nuestro Objetivo</h5>
+              <p>Nuestro Objetivo es brindar servicios de calidad, conforme a normas y reglamentos, con un profundo respeto por la seguridad del cliente y con costos competitivos.</p>
+            </div>
+          </div>
+          <div class="col-md-3 col-sm-6 col-xs-6 about-content-right text-center">
+            <div class="about-box">
+              <h5><i class="icon icon-Users fa fa-users"></i>Equipo dedicado</h5>
+              <p>Nuestro trabajo abarca desde los cálculos iniciales de un proyecto hasta la ejecución de la obra con habilitaciones para firmar planos y tramitaciones.</p>
+            </div>
+          </div>
+            <div class="col-md-3 col-sm-6 col-xs-6 about-content-right text-center">
+              <div class="about-box">
+                <h5><i class="icon fa fa-clock-o"></i>Disponibilidad y Orientacion</h5>
+                <p>Estamos orientados a solucionar integralmente los problemas del cliente y prestar servicios de primera calidad de una forma eficaz y responsable con una alta disponibilidad para nuestros clientes.</p>
+              </div>
+            </div>
+      </div><!-- Sección About -->
+    </div>
+
+      
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark justify-content-center">
   <!-- Navbar content --><h2>MATERIALES</h2>
 </nav>
-			<p>Trabajamos con materiales de alta calidad acorde con normas UNIT y homologadas por UTE</p>
+<!--<img src="assets/images/seprator.png" alt="seprator" />-->
+  <div class="materiales">
+      <p>Trabajamos con materiales de alta calidad acorde con normas UNIT y homologadas por UTE</p>
       <img src="imagenes/Logo_ABB.svg" class="logo">
       <img src="imagenes/Logo_Schneider.png" class="logo">
       <img src="imagenes/Logo_Omron.png" class="logo">
       <img src="imagenes/Logo_3M.png" class="logo">
       <img src="imagenes/Logo_Festo.png" class="logo">
-		</div>
-		<div class="empresa" id="empresa">
-			<nav class="navbar navbar-expand-lg navbar-dark bg-dark justify-content-center">
-  <!-- Navbar content --><h2>EMPRESA</h2>
-</nav>
-			<h4>Sobre Electro Técnica </h4>
-			<p>Somos una empresa nacional joven formada por instaladores profesionales. Orientada principalmente a instalaciones eléctricas, buscando siempre brindar servicios de calidad, conforme a normas y reglamentos, respetando la seguridad del cliente y con costos competitivos.
+    </div>
 
-            Nuestro trabajo abarca desde los cálculos iniciales de un proyecto hasta la ejecución de la obra con habilitaciones para firmar planos y tramitaciones.
-
-            Nos encontramos en constante aprendizaje y evolución técnica.
-            </p>
-		</div>
-
-
-
-
-
-	</div>
-	
-			<nav class="navbar navbar-expand-lg navbar-dark bg-dark justify-content-center">
+ <div class="carrusel">
+  
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark justify-content-center">
   <!-- Navbar content --><h2>TRABAJOS REALIZADOS</h2>
 </nav>
 
@@ -262,7 +289,8 @@
 
 
   </div>
-
+  </div>
+      <!--*******************************fin de probando***********************************-->
 
 
 

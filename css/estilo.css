@@ -2,13 +2,15 @@
 .prueba {
   padding: 5px; }
 
+
 h2 {
   color: white;
   font-size: 20px;
   font-family: "Roboto", Arial, Tahoma, sans-serif;
   text-align: center;
   letter-spacing: 10px;
-  font-weight: bold; }
+  font-weight: bold;
+   }
 
 p {
   font-family: "Roboto", Arial, Tahoma, sans-serif;
@@ -32,14 +34,42 @@ p {
 
 /*****************************PRESUPUESTOS-MATERIALES-EMPRESA*******************************/
 .presupuestos, .materiales, .empresa {
-  margin-top: 20px;
-  text-align: center; }
+  text-align: center;
+  width: 100%; 
+}
 
 
   .logo {
 
   max-height: 60px;
 }
+
+/************************************PROBANDO******************************************/
+#empresa{
+
+  padding-top: 20px;
+  padding-bottom: 0px;
+  margin-bottom: 0px;
+  width: 100%;
+}
+
+.materiales {
+  padding-bottom: 3%;
+}
+
+.carrusel {
+
+  padding-bottom: 0px;
+  margin-bottom: 0px;
+}
+
+.presupuestos {
+
+  padding-bottom: 0px;
+  margin-bottom: 0px;
+}
+
+/**************************************************FIN DE PROBANDO**********************************************/
 
 @media (max-width: 731px) {
   .presupuestos, materiales, .empresa {
