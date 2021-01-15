@@ -12,15 +12,28 @@ body {
 	background: black;  
 }
 
+h1{
+
+	color: white;
+}
+
+h2 {
+  color: white;
+  font-size: 20px;
+  font-family:"Rubik",'Ubuntu',"Lato", Arial, sans-serif;
+  text-align: center;
+  letter-spacing: 10px;
+   }
+   
 h3 {
 	text-align: center;
 }
 
 /* Add styles to 'container' class */
-.container {
+.containerF {
 	padding: 12px 24px 24px 24px;
 	margin: 48px 12px;
-	background: grey;
+	background: #e1e4ed;
 	border-radius: 4px;
 }
 
